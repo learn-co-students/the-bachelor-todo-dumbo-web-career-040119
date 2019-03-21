@@ -8,7 +8,7 @@ def get_first_name_of_season_winner(data, season)
         if v == "Winner"
             full_name = people["name"]
             return full_name.split(' ').first
-        end 
+        end
       end
     end
 end
@@ -69,18 +69,42 @@ end
 
 
 def get_average_age_for_season(data, season)
-  # code here
-age = 0
-count = 0
-  data[season].each do |hash|
-    hash.each do |k,v|
-      if k == "age"
-        count += 1
-        age += v.to_f
-      end
-    end
-  end
+d = []
+i = 0
+arr = data.keys
+while i < arr.length
+d << data[arr[i]]
+i+=1
+end
 
-  answer = (age/count).round
-return answer
+g = []
+d.collect do |i,v|
+i.collect do |b,t|
+g << b
+end
+end
+g.uniq!
+
+
+###NEED TO ITERATE AND GIVE AVERAGE AGE OF CONTESTANTS/SEASON
+j = []
+       data[season].collect do |i|
+                i.collect do |b,v|
+                      if b == :age
+                      j << v
+                      end
+          end
+        end
+
+b = j.flatten.compact.size
+a = j.reduce(:+)
+
+            c = []
+                    j.each do |i|
+                    c << i.to_i
+            end
+
+c = c.reduce(:+)
+
+answer = c/b
 end
