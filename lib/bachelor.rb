@@ -1,3 +1,5 @@
+require 'pry'
+
 def get_first_name_of_season_winner(data, season)
   # code here
 # binding.pry
@@ -69,42 +71,26 @@ end
 
 
 def get_average_age_for_season(data, season)
-d = []
-i = 0
-arr = data.keys
-while i < arr.length
-d << data[arr[i]]
-i+=1
-end
+  j = []
+         data[season.to_sym].each do |i|
+binding.pry
 
-g = []
-d.collect do |i,v|
-i.collect do |b,t|
-g << b
-end
-end
-g.uniq!
-
-
-###NEED TO ITERATE AND GIVE AVERAGE AGE OF CONTESTANTS/SEASON
-j = []
-       data[season].collect do |i|
-                i.collect do |b,v|
-                      if b == :age
-                      j << v
-                      end
-          end
-        end
-
-b = j.flatten.compact.size
-a = j.reduce(:+)
-
-            c = []
-                    j.each do |i|
-                    c << i.to_i
+                  i.collect do |b,v|
+                        if b == :age
+                        j << v
+                        end
             end
+      end
+  t =""
+  t = j.flatten.compact.size
+  # a = j.reduce(:+)
 
-c = c.reduce(:+)
+              c = []
+                      j.each do |i|
+                      c << i.to_i
+              end
 
-answer = c/b
+  c = c.reduce(:+)
+
+  c/t.to_i
 end
